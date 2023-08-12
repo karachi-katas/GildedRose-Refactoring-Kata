@@ -10,6 +10,65 @@ namespace csharp
             this.Items = Items;
         }
 
+        public void UpdateQualityV2()
+        {
+            for (var i = 0; i < Items.Count; i++)
+            {
+                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                {
+                    if (Items[i].SellIn > 0)
+                    {
+                        Items[i].SellIn--;
+                    }
+
+                    switch (Items[i].Name)
+                    {
+                        case "Aged Brie":
+                            {
+                                Items[i].Quality++;
+                                if(Items[i].SellIn == 0)
+                                    Items[i].Quality++;
+                                break;
+                            }
+                        case "Backstage passes to a TAFKAL80ETC concert":
+                            {
+                                if (Items[i].SellIn == 0)
+                                    Items[i].Quality = 0;
+                                else if (Items[i].SellIn <= 5)
+                                    Items[i].Quality++;
+                                else if (Items[i].SellIn <= 10)
+                                    Items[i].Quality += 2;
+                                else
+                                    Items[i].Quality++;
+
+                                break;
+                            }
+                        case "Conjured Mana Cake":
+                            {
+                                Items[i].Quality -= 2;
+                                if (Items[i].SellIn == 0)
+                                    Items[i].Quality -= 2;
+                                break;
+                            }
+                        default:
+                            {
+                                if (Items[i].SellIn == 0)
+                                    Items[i].Quality = Items[i].Quality - 2;
+                                else
+                                    Items[i].Quality--;
+                                break;
+                            }
+
+                    }
+
+                    if (Items[i].Quality > 50)
+                        Items[i].Quality = 50;
+                    if (Items[i].Quality < 0)
+                        Items[i].Quality = 0;
+                }
+            }
+        }
+
         public void UpdateQuality()
         {
             for (var i = 0; i < Items.Count; i++)
