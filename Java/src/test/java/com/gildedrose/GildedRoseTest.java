@@ -65,6 +65,20 @@ class GildedRoseTest {
     }
 
     @Test
+    void ageBrieIncreasesQualityAtTwiceSpeedAfterExpiry2() {
+        Item[] items = new Item[] { new Item("Aged Brie", -2, 6) };
+        GildedRose app = new GildedRose(items);
+        int expectedQualityValue = 8;
+
+
+        app.updateQuality();
+
+
+        assertEquals(expectedQualityValue,items[0].quality);
+        assertEquals(-3, items[0].sellIn);
+    }
+
+    @Test
     void shouldNotIncreaseQualityFrom50() {
         //Init
         Item[] items = new Item[] { new Item("Aged Brie", 1, 50) };
