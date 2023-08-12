@@ -20,8 +20,11 @@ class GildedRose {
                         items[i].quality = items[i].quality + 1;
                     }
                 }
-            }
 
+                if (items[i].quality < 50) {
+                    items[i].quality = items[i].quality + 1;
+                }
+            }
 
             if (!items[i].name.equals("Aged Brie")
                 && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
@@ -31,24 +34,24 @@ class GildedRose {
                     }
 
                 }
-            } else {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
+            } else if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert") && items[i].quality < 50){
 
-                    if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
+                items[i].quality = items[i].quality + 1;
+
+                if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    if (items[i].sellIn < 11) {
+                        if (items[i].quality < 50) {
+                            items[i].quality = items[i].quality + 1;
                         }
+                    }
 
-                        if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
+                    if (items[i].sellIn < 6) {
+                        if (items[i].quality < 50) {
+                            items[i].quality = items[i].quality + 1;
                         }
                     }
                 }
+
             }
 
 
